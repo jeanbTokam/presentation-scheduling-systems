@@ -9,7 +9,7 @@ require('dotenv').config()
 // import routes
 
 const postRoutes = require('./routes/post')
-
+const authRoutes = require('./routes/auth');
 
 // app
 
@@ -33,7 +33,7 @@ app.use(bodyParser.json())
 // routes middleware or endpoints
 
 app.use('/api', postRoutes)
-
+app.use('/api', authRoutes)
 
 // port
 

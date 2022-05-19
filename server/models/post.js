@@ -1,35 +1,33 @@
- const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
- const {ObjectId} = mongoose.Schema
-
-
- const postSchema = new mongoose.Schema({
-
-     title: {
+const postSchema = new mongoose.Schema(
+    {
+        title: {
             type: String,
             trim: true,
-            min:3,
-            max:160,
+            min: 3,
+            max: 160,
             required: true
-     },
-     slug: {
+        },
+        slug: {
             type: String,
             unique: true,
             index: true,
             lowercase: true
-        
-     },
-     content:{
-             type:{},
-             required: true,
-             min:20,
-             max:200000,
-         },
-         user:{
-              type: String,
-              default:'Admin'
-         }
-     
- }, {timestamps: true})
+        },
+        content: {
+            type: {},
+            required: true,
+            min: 20,
+            max: 2000000
+        },
+        user: {
+            type: String,
+            default: 'Admin'
+        }
+    },
+    { timestamps: true }
+);
 
- module.exports = mongoose.model('Post', postSchema)
+module.exports = mongoose.model('Post', postSchema);
